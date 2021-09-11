@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
+:root {
+  --color-dourado: #fbbc04;
+  --color-black: #272823;
+  --color-white: #FFF;
+  --color-gray: #CCC;
+  --color-vermelho: rgb(202, 41, 41);
+}
+
+* {
+  outline: 0;
+  box-sizing: border-box;
+}
+
+@keyframes tempo-alerta{
+  0%{width: 100%;}
+  100%{width: 0%;}
+}
+
+.alerta{
+  width: 400px;
+  height: 100px;
+  padding-top: 35px;
+  border-radius: 5px;
+  background-color: var(--color-vermelho);
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  flex-direction: column;
+  color: var(--color-white);
+  position: absolute;
+  top: 20px;
+  display: none;
+}
+
+.alerta::after{
+  content: '';
+  width: 100%;
+  height: 5px;
+  background-color: var(--color-white);
+  align-self: 10;
+  animation-name: tempo-alerta;
+  animation-duration: 3s;
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url(imagem/background.png);
+  background-size: cover;
+  background-position: center;
+  font-family: 'Open sans', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background-color: var(--color-black);
+  padding: 10px;
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.calculadora{
+  background-color: var(--color-white);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.display{
+  width: 400px;
+  height: 100px;
+  padding: 20px;
+  font-size: 50px;
+  text-align: right;
+}
+
+.btn{
+  width: 100%;
+  height: 60px;
+  font-size: 20px;
+  border-radius: 50px;
+  border: 0px;
+  background-color: var(--color-white);
+  box-shadow: 0px 0px 5px var(--color-gray);
+  cursor: pointer;
+}
+
+.btn.btn-ar{
+  background-color: var(--color-dourado);
+}
+
+.btn.btn-eq{
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.btn.btn-es{
+  background-color: var(--color-gray);
+}
+
+@media(max-width: 480px){
+  .display{
+    width: 300px;
+  }
+  .btn{
+    height: 70px;
+  }
+  .alerta{
+    width: 300px;
+    position: static;
+    margin-bottom: 10px;
+  }
+}
