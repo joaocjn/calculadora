@@ -20,11 +20,7 @@ function Calculadora(){
 
         try{
             conta = eval(conta);
-
-            if(!conta){
-                document.querySelector('.alerta').style.display = 'flex';
-                return;
-            }
+            
             if(Number.isInteger(conta)){
                 this.display.innerText = conta;
             }else{
@@ -40,20 +36,12 @@ function Calculadora(){
         }
     };
 
-    this.clearDisplay = () =>{
-        this.display.innerText = '';
-    };
+    this.clearDisplay = () => this.display.innerText = '';
 
-    this.apagaUm = () =>{
-        this.display.innerText = this.display.innerText.slice(0, -1);
-    };
+    this.apagaUm = () => this.display.innerText = this.display.innerText.slice(0, -1);
 
     this.btnParaDisplay = (valor) =>{
-        if(this.contador === 0){
-            this.display.innerText += valor;  
-        }else{
-            this.display.innerText = valor;
-        }            
+        this.contador === 0 ? this.display.innerText += valor : this.display.innerText = valor;           
     };
 
     this.cliqueTeclado = () =>{
@@ -131,21 +119,15 @@ function Calculadora(){
         document.addEventListener('click', evento =>{
             const elemento = evento.target;
 
-            if(elemento.classList.contains('btn-ar')){
-                this.contador = 0;
-            }
+            if(elemento.classList.contains('btn-ar')) this.contador = 0;
 
             if(elemento.classList.contains('btn-num')){
                 this.btnParaDisplay(elemento.innerText);
                 this.cancelaEnter(elemento);
                 this.contador = 0;
             }
-            if(elemento.classList.contains('btn-clear')){
-                this.clearDisplay();
-            }
-            if(elemento.classList.contains('btn-del')){
-                this.apagaUm();
-            }
+            if(elemento.classList.contains('btn-clear')) this.clearDisplay();
+            if(elemento.classList.contains('btn-del')) this.apagaUm();
             if(elemento.classList.contains('btn-eq')){
                 this.realizaConta();
                 this.contador = 1;
